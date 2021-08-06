@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import emailList from '../files/emailList.json';
-import frameworkVersionList from '../files/frameworkVersion.json';
+import frameworkVersionList from '../files/frameworkVersionList.json';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class FormComponent implements OnInit {
+
+export class FormComponent {
   firstName = new FormControl('');
   lastName = new FormControl('');
   dateOfBirth = new FormControl('');
@@ -34,9 +35,19 @@ export class FormComponent implements OnInit {
     hobby: this.hobby
   });
 
-  constructor() { }
+  frameworkVersionOptions: String[] = [];
 
-  ngOnInit(): void {
+  getFrameworkVersionOptions(event: any) {
+    this.frameworkVersionOptions = [];
+    const {target: {value}} = event;
+
+    frameworkVersionList.forEach((el: any) => {
+      if (el.name === value) {
+        el.versions.forEach((version: String) => {
+          this.frameworkVersionOptions.push(version);
+        })
+      }
+    });
   }
 
   checkIsEmailAlreadyRegisterd(control: AbstractControl) {
