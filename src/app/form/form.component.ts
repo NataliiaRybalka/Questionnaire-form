@@ -10,20 +10,13 @@ import frameworkVersionList from '../files/frameworkVersionList.json';
 })
 
 export class FormComponent {
-  firstName = new FormControl('');
-  lastName = new FormControl('');
-  dateOfBirth = new FormControl('');
-  framework = new FormControl('');
-  frameworkVersion = new FormControl('');
+  firstName = new FormControl('', Validators.required);
+  lastName = new FormControl('', Validators.required);
+  dateOfBirth = new FormControl('', Validators.required);
+  framework = new FormControl('', Validators.required);
+  frameworkVersion = new FormControl('', Validators.required);
   email = new FormControl('', [Validators.required, Validators.email, this.checkIsEmailAlreadyRegisterd]);
-  hobby = new FormControl('');
-  // firstName = new FormControl('', Validators.required);
-  // lastName = new FormControl('', Validators.required);
-  // dateOfBirth = new FormControl('', Validators.required);
-  // framework = new FormControl('', Validators.required);
-  // frameworkVersion = new FormControl('', Validators.required);
-  // email = new FormControl('', [Validators.required, Validators.email]);
-  // hobby = new FormControl([], Validators.required);
+  hobby = new FormControl([], Validators.required);
 
   myFormGroup = new FormGroup({
     firstName: this.firstName,

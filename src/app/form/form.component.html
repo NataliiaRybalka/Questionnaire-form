@@ -11,7 +11,13 @@
 
   <div>
     <label>date of birth</label>
-    <input type="text" name="dateOfBirth" [formControl]="dateOfBirth">
+    <mat-form-field appearance="fill">
+      <input matInput [matDatepicker]="picker" [formControl]="dateOfBirth">
+      <mat-datepicker-toggle matSuffix [for]="picker">
+        <mat-icon matDatepickerToggleIcon>&#9660;</mat-icon>
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
   </div>
 
   <div>
