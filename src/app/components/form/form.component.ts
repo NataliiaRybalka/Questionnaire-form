@@ -92,8 +92,8 @@ export class FormComponent implements OnInit {
       const oneOfHobbyArray = el.split('-');
       
       const oneOfHobbyObject = {
-        name: oneOfHobbyArray[0].trim(),
-        duration: oneOfHobbyArray[1].trim()
+        name: oneOfHobbyArray[0],
+        duration: oneOfHobbyArray[1]
       };
 
       hobbyArray.push(oneOfHobbyObject);
