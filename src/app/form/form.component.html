@@ -1,18 +1,20 @@
+<h1>Developer's Front-End questionnaire form</h1>
+
 <form [formGroup]="myFormGroup" (ngSubmit)="save()">
   <div>
-    <label>first name</label>
-    <input type="text" name="firstName" [formControl]="firstName">
+    <label>First name</label>
+    <input type="text" name="firstName" [formControl]="firstName" placeholder="required">
   </div>
 
   <div>
-    <label>last name</label>
-    <input type="text" name="lastName" [formControl]="lastName">
+    <label>Last name</label>
+    <input type="text" name="lastName" [formControl]="lastName" placeholder="required">
   </div>
 
   <div>
-    <label>date of birth</label>
+    <label>Date of birth</label>
     <mat-form-field appearance="fill">
-      <input matInput [matDatepicker]="picker" [formControl]="dateOfBirth">
+      <input matInput [matDatepicker]="picker" [formControl]="dateOfBirth" placeholder="required">
       <mat-datepicker-toggle matSuffix [for]="picker">
         <mat-icon matDatepickerToggleIcon>&#9660;</mat-icon>
       </mat-datepicker-toggle>
@@ -21,7 +23,7 @@
   </div>
 
   <div>
-    <label>framework</label>
+    <label>Framework</label>
     <select [formControl]="framework" (change)="getFrameworkVersionOptions($event)">
       <option value="angular">angular</option>
       <option value="react">react</option>
@@ -30,21 +32,23 @@
   </div>
 
   <div>
-    <label>frameworkVersion</label>
+    <label>Framework version</label>
     <select [formControl]="frameworkVersion">
-      <option *ngFor="let version of frameworkVersionOptions">{{version}}</option>
+      <option *ngFor="let version of frameworkVersionOptions" value={{version}}>{{version}}</option>
     </select>
   </div>
 
   <div>
-    <label>email</label>
-    <input type="text" name="email" [formControl]="email">
+    <label>Email</label>
+    <input type="text" name="email" [formControl]="email" placeholder="required">
+    <br>
+    <p class="error" *ngIf="email.errors?.emailRegistered">this email is already registered</p>
   </div>
   
   <div>
-    <label>hobby</label>
-    <input type="text" name="hobby" [formControl]="hobby">
+    <label>Hobby</label>
+    <input type="text" name="hobby" [formControl]="hobby" placeholder="required">
   </div>
 
-  <button [disabled]="!myFormGroup.valid">save</button>
+  <button [disabled]="!myFormGroup.valid">Registration</button>
 </form>

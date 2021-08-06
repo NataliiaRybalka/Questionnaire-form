@@ -60,7 +60,8 @@ export class FormComponent {
   }
 
   save() {
-    console.log(this.myFormGroup);
+    const answer = this.myFormGroup.value;
+    console.log(answer);
   }
 
 }

@@ -1,0 +1,27 @@
+h1 {
+  margin-left: 100px;
+}
+
+form {
+  margin-left: 100px;
+  border: 1px solid black;
+  width: 400px;
+  padding: 20px;
+}
+
+form > div {
+  margin: 20px;
+}
+
+label {
+  margin-right: 10px;
+}
+
+button {
+  display: block;
+  margin: 0 auto;
+}
+
+.error {
+  color: red;
+}
