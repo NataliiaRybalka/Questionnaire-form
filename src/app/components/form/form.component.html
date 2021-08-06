@@ -3,18 +3,18 @@
 <form [formGroup]="myFormGroup" (ngSubmit)="save()">
   <div>
     <label>First name</label>
-    <input type="text" name="firstName" [formControl]="firstName" placeholder="required">
+    <input type="text" name="firstName" [formControl]="firstName">
   </div>
 
   <div>
     <label>Last name</label>
-    <input type="text" name="lastName" [formControl]="lastName" placeholder="required">
+    <input type="text" name="lastName" [formControl]="lastName">
   </div>
 
   <div>
     <label>Date of birth</label>
     <mat-form-field appearance="fill">
-      <input matInput [matDatepicker]="picker" [formControl]="dateOfBirth" placeholder="required">
+      <input matInput [matDatepicker]="picker" [formControl]="dateOfBirth">
       <mat-datepicker-toggle matSuffix [for]="picker">
         <mat-icon matDatepickerToggleIcon>&#9660;</mat-icon>
       </mat-datepicker-toggle>
@@ -40,14 +40,14 @@
 
   <div>
     <label>Email</label>
-    <input type="text" name="email" [formControl]="email" placeholder="required">
+    <input type="text" name="email" [formControl]="email" (focusout)="checkIsEmailAlreadyRegisterd($event)">
     <br>
-    <p class="error" *ngIf="email.errors?.emailRegistered">this email is already registered</p>
+    <p class="error" *ngIf="emailRegistered">this email is already registered</p>
   </div>
-  
+
   <div>
     <label>Hobby</label>
-    <input type="text" name="hobby" [formControl]="hobby" placeholder="required">
+    <textarea rows="3" name="hobby" [formControl]="hobby" placeholder="name - duration&#010;name - duration"></textarea>
   </div>
 
   <button [disabled]="!myFormGroup.valid">Registration</button>
