@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import emailList from '../files/emailList.json';
+import frameworkVersionList from '../files/frameworkVersion.json';
 
 @Component({
   selector: 'app-form',
@@ -12,7 +14,7 @@ export class FormComponent implements OnInit {
   dateOfBirth = new FormControl('');
   framework = new FormControl('');
   frameworkVersion = new FormControl('');
-  email = new FormControl('');
+  email = new FormControl('', [Validators.required, Validators.email, this.checkIsEmailAlreadyRegisterd]);
   hobby = new FormControl('');
   // firstName = new FormControl('', Validators.required);
   // lastName = new FormControl('', Validators.required);
@@ -35,6 +37,22 @@ export class FormComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  checkIsEmailAlreadyRegisterd(control: AbstractControl) {
+    let emailRegistered = false;
+
+    emailList.forEach((el: any) => {
+      if (el.email === control.value) {
+        emailRegistered = true;
+      }
+    });
+
+    if (emailRegistered) {
+      return {emailRegistered: true}
+    }
+
+    return null;
   }
 
   save() {
